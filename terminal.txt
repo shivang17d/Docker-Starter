@@ -1,0 +1,191 @@
+Microsoft Windows [Version 10.0.19045.2846]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32>docker images
+error during connect: in the default daemon configuration on Windows, the docker client must be run with elevated privileges to connect: Get "http://%2F%2F.%2Fpipe%2Fdocker_engine/v1.24/images/json": open //./pipe/docker_engine: The system cannot find the file specified.
+
+C:\Windows\system32>wsl --update
+Installing: Windows Subsystem for Linux
+Windows Subsystem for Linux has been installed.
+
+C:\Windows\system32>
+C:\Windows\system32>
+C:\Windows\system32>docker images
+Error response from daemon: open \\.\pipe\docker_engine_linux: The system cannot find the file specified.
+
+C:\Windows\system32>docker pull openjdk
+Using default tag: latest
+Error response from daemon: open \\.\pipe\docker_engine_linux: The system cannot find the file specified.
+
+C:\Windows\system32>docker  run -d -p 80:80 docker/getting-started
+Unable to find image 'docker/getting-started:latest' locally
+latest: Pulling from docker/getting-started
+c158987b0551: Pull complete
+1e35f6679fab: Pull complete
+197c1adcd755: Downloading [==================>                                ]  16.92MB/44.56MB
+57b698b7af4b: Downloading [=================>                                 ]  4.336MB/12.26MB
+95a27dbe0150: Downloading [=======>                                           ]  26.43MB/188.7MB
+197c1adcd755: Downloading [=================>                                 ]  15.55MB/44.56MB
+95a27dbe0150: Downloading [=>                                                 ]  6.994MB/188.7MB
+95a27dbe0150: Downloading [======>                                            ]  23.73MB/188.7MB
+197c1adcd755: Downloading [================>                                  ]  14.63MB/44.56MB
+197c1adcd755: Downloading [======>                                            ]  5.487MB/44.56MB
+57b698b7af4b: Downloading [==============>                                    ]  3.545MB/12.26MB
+33e0cbbb4673: Pull complete
+95a27dbe0150: Downloading [=>                                                 ]  5.913MB/188.7MB
+5d79063a01c5: Downloading [====>                                              ]  1.309MB/15.76MB
+95a27dbe0150: Downloading [===========================>                       ]  101.9MB/188.7MB
+730355e3454fd29a6fb5bcf6d520da4d35eb8eb6c5d1cd87cabf786235560096
+197c1adcd755: Pull complete
+57b698b7af4b: Pull complete
+95a27dbe0150: Downloading [============================>                      ]  106.3MB/188.7MB
+docker/getting-started   latest    3e4394f6b72f   4 months ago   47MB
+4eedd9c5abf7: Downloading [===>                                               ]  3.754MB/54.58MB
+C:\Windows\system32>docker pull openjdk
+95a27dbe0150: Downloading [=========================>                         ]  96.02MB/188.7MB
+95a27dbe0150: Downloading [=========================>                         ]  94.94MB/188.7MB
+95a27dbe0150: Downloading [=========================>                         ]   97.1MB/188.7MB
+57b698b7af4b: Downloading [=============>                                     ]  3.414MB/12.26MB
+197c1adcd755: Downloading [===============>                                   ]  14.18MB/44.56MB
+57b698b7af4b: Download complete
+95a27dbe0150: Downloading [===============================>                   ]  117.1MB/188.7MB
+918547b94326: Downloading [==>                                                ]  3.226MB/55.05MB
+95a27dbe0150: Downloading [==============================>                    ]  114.9MB/188.7MB
+
+
+95a27dbe0150: Downloading [========================>                          ]  92.24MB/188.7MB
+
+95a27dbe0150: Downloading [==========================>                        ]  101.4MB/188.7MB
+
+
+
+95a27dbe0150: Pull complete
+4eedd9c5abf7: Downloading [===>                                               ]  4.287MB/54.58MB
+Status: Downloaded newer image for openjdk:latest
+docker.io/library/openjdk:latest====================>                         ]   94.4MB/188.7MB
+
+C:\Windows\system32>
+C:\Windows\system32>ading [==========================>                        ]  100.9MB/188.7MB
+C:\Windows\system32>
+C:\Windows\system32>
+C:\Windows\system32>
+C:\Windows\system32>
+C:\Windows\system32>docker images
+REPOSITORY               TAG       IMAGE ID       CREATED        SIZE
+openjdk                  latest    71260f256d19   2 months ago   470MB
+docker/getting-started   latest    3e4394f6b72f   4 months ago   47MB
+
+C:\Windows\system32>docker run --name JAVA -it -d openjdk
+5d79063a01c5: Downloading [===>                                               ]  1.145MB/15.76MB
+918547b94326: Downloading [===============>                                   ]  16.72MB/55.05MB
+5d79063a01c5: Downloading [======================================>            ]  11.99MB/15.76MB
+4eedd9c5abf7: Downloading [================>                                  ]  18.28MB/54.58MB
+f37564ddbaae   openjdk                  "jshell"                 14 seconds ago   Up 11 seconds                        JAVA
+4eedd9c5abf7: Downloading [=================>                                 ]  18.82MB/54.58MB
+
+C:\Windows\system32>docker exec -it JAVA jshell
+|  Welcome to JShell -- Version 18.0.2.1
+|  For an introduction type: /help intro
+918547b94326: Downloading [==========>                                        ]  11.86MB/55.05MB
+5d79063a01c5: Downloading [===================>                               ]  6.085MB/15.76MB
+Hello World
+
+jshell> int a = 10
+a ==> 10
+
+jshell> int b = 30
+5d79063a01c5: Downloading [==================>                                ]  5.921MB/15.76MB
+
+5d79063a01c5: Downloading [======================================>            ]  12.15MB/15.76MB
+40
+
+jshell> /exit
+|  Goodbye
+
+C:\Windows\system32>docker ps
+CONTAINER ID   IMAGE                    COMMAND                  CREATED         STATUS         PORTS                NAMES
+f37564ddbaae   openjdk                  "jshell"                 3 minutes ago   Up 3 minutes                        JAVA
+730355e3454f   docker/getting-started   "/docker-entrypoint.…"   9 minutes ago   Up 9 minutes   0.0.0.0:80->80/tcp   determined_elion
+4eedd9c5abf7: Downloading [==>                                                ]  3.214MB/54.58MB
+C:\Windows\system32>docker container rm 730355e3454f
+Error response from daemon: You cannot remove a running container 730355e3454fd29a6fb5bcf6d520da4d35eb8eb6c5d1cd87cabf786235560096. Stop the container before attempting removal or force remove
+918547b94326: Downloading [==========>                                        ]  11.32MB/55.05MB
+C:\Windows\system32>docker stop 730355e3454f
+730355e3454f
+
+C:\Windows\system32>docker container rm 730355e3454f
+730355e3454f
+
+5d79063a01c5: Downloading [====>                                              ]  1.473MB/15.76MB
+4eedd9c5abf7: Downloading [=============>                                     ]  14.51MB/54.58MB
+f37564ddbaae   openjdk   "jshell"   4 minutes ago   Up 4 minutes             JAVA
+918547b94326: Downloading [===============>                                   ]  17.26MB/55.05MB
+C:\Windows\system32>docker stop f37564ddbaae
+f37564ddbaae
+
+C:\Windows\system32>docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
+C:\Windows\system32>docker images
+918547b94326: Downloading [==>                                                ]  2.685MB/55.05MB
+openjdk                  latest    71260f256d19   2 months ago   470MB
+docker/getting-started   latest    3e4394f6b72f   4 months ago   47MB
+
+C:\Windows\system32>docker image prune
+918547b94326: Downloading [====>                                              ]  4.844MB/55.05MB
+5d79063a01c5: Downloading [======>                                            ]  2.124MB/15.76MB
+4eedd9c5abf7: Downloading [=====>                                             ]  6.437MB/54.58MB
+5d79063a01c5: Downloading [===>                                               ]  981.3kB/15.76MB
+C:\Windows\system32>docker images
+REPOSITORY               TAG       IMAGE ID       CREATED        SIZE
+openjdk                  latest    71260f256d19   2 months ago   470MB
+docker/getting-started   latest    3e4394f6b72f   4 months ago   47MB
+5d79063a01c5: Downloading [=======================================>           ]  12.48MB/15.76MB
+C:\Windows\system32>docker pull node
+Using default tag: latest
+latest: Pulling from library/node
+5d79063a01c5: Downloading [==================>                                ]  5.757MB/15.76MB
+918547b94326: Downloading [=====>                                             ]  6.466MB/55.05MB
+5d79063a01c5: Downloading [========>                                          ]   2.62MB/15.76MB
+4eedd9c5abf7: Downloading [========>                                          ]  9.124MB/54.58MB
+b58a51cba8a5: Waiting
+b95104135278: Waiting
+155685169ccf: Waiting
+fe64676ed347: Waiting
+918547b94326: Downloading [====>                                              ]  5.385MB/55.05MB
+4eedd9c5abf7: Downloading [======>                                            ]  7.514MB/54.58MB
+
+
+
+
+
+
+918547b94326: Downloading [========>                                          ]  9.165MB/55.05MB
+918547b94326: Downloading [=========>                                         ]  10.78MB/55.05MB
+5d79063a01c5: Downloading [=================>                                 ]  5.593MB/15.76MB
+4eedd9c5abf7: Downloading [============>                                      ]  13.97MB/54.58MB
+918547b94326: Downloading [==================>                                ]  20.49MB/55.05MB
+5d79063a01c5: Download complete
+4eedd9c5abf7: Downloading [=========================>                         ]  27.99MB/54.58MB
+
+
+
+
+
+918547b94326: Pull complete
+5d79063a01c5: Pull complete
+4eedd9c5abf7: Pull complete
+9cdadd40055f: Pull complete
+b58a51cba8a5: Pull complete
+b95104135278: Pull complete
+155685169ccf: Pull complete
+fe64676ed347: Pull complete
+Digest: sha256:0efc3ef3fea2822c9d16da084c40181ed7f74b6f45141100580f9887ccc8e9a1  23.73MB/196.8MB
+Status: Downloaded newer image for node:latest
+docker.io/library/node:latest==>                                              ]   3.93MB/47.61MB
+
+C:\Windows\system32>docker images
+REPOSITORY               TAG       IMAGE ID       CREATED        SIZE
+node                     latest    acd15857ce39   2 days ago     1GB
+openjdk                  latest    71260f256d19   2 months ago   470MB
+docker/getting-started   latest    3e4394f6b72f   4 months ago   47MB
